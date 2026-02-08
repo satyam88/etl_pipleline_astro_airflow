@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  weather-db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow123
+      POSTGRES_DB: airflow_db
+      POSTGRES_HOST_AUTH_METHOD: md5
+    ports:
+      - "5433:5432"
+    volumes:
+      - weather_postgres_data:/var/lib/postgresql/data
+    networks:
+      - airflow
+
+volumes:
+  weather_postgres_data:
