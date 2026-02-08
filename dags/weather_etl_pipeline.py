@@ -19,8 +19,8 @@ from datetime import datetime, timedelta
 # -----------------------------
 
 # Latitude and longitude for the desired location (London in this case)
-LATITUDE = '18.5246'
-LONGITUDE = '73.8786'
+LATITUDE = '32.239632'
+LONGITUDE = '77.188713'
 
 # Airflow Connection IDs (must be created in Airflow UI -> Admin -> Connections)
 POSTGRES_CONN_ID = 'weather_db'   # For PostgreSQL database
