@@ -1,0 +1,48 @@
+# This file allows you to configure Airflow Connections, Pools, and Variables in a single place for local development only.
+# NOTE: json dicts can be added to the conn_extra field as yaml key value pairs. See the example below.
+
+# For more information, refer to our docs: https://www.astronomer.io/docs/astro/cli/develop-project#configure-airflow_settingsyaml-local-development-only
+# For questions, reach out to: https://support.astronomer.io
+# For issues create an issue ticket here: https://github.com/astronomer/astro-cli/issues
+
+airflow:
+  connections:
+    - conn_id: weather_db
+      conn_type: postgres
+      conn_host: etl-pipleline-astro-airflow_4927ad-weather-db-1  # Use the full container name
+      conn_schema: airflow_db
+      conn_login: airflow
+      conn_password: airflow123
+      conn_port: 5432
+
+    - conn_id: open_meteo_api
+      conn_type: http
+      conn_host: https://api.open-meteo.com
+
+    - conn_id: nasa_api
+      conn_type: http
+      conn_host: https://api.nasa.gov
+      conn_extra: |
+        {
+          "api_key": "om"
+        }
+
+    - conn_id: my_snowflake_connection
+      conn_type: snowflake
+      conn_login: satyampandey88
+      conn_password: 
+      conn_extra: |
+        {
+          "account": "fqfrwgj-yt76957",
+          "warehouse": "COMPUTE_WH",
+          "database": "AIRFLOW_DB",
+          "schema": "PUBLIC",
+          "role": "SYSADMIN"
+        }
+  pools: []
+  variables: []
+
+
+#fqfrwgj = Organization name / ID
+#yt76957 = Account name
+#ap-southeast-1 = region
